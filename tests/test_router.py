@@ -46,3 +46,7 @@ def test_case_insensitive():
     action, params = keyword_route("OPEN Safari")
     assert action == "open_app"
     assert params["app"].lower() == "safari"
+
+def test_date():
+    action, _ = keyword_route("what is today's date")
+    assert action == "get_date"

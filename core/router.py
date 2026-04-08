@@ -4,7 +4,7 @@ from typing import Optional
 # Each entry: (regex_pattern, action_name, param_extractor_fn)
 ROUTES = [
     (r"volume\s+(\d+)", "set_volume", lambda m: {"level": m.group(1)}),
-    (r"open\s+([a-zA-Z][a-zA-Z0-9\s]+)", "open_app", lambda m: {"app": m.group(1).strip()}),
+    (r"open\s+([a-zA-Z][a-zA-Z0-9]{0,30}(?:\s[a-zA-Z0-9]{1,20}){0,2})", "open_app", lambda m: {"app": m.group(1).strip()}),
     (r"battery", "get_battery", lambda m: {}),
     (r"brightness\s+(\d+)", "set_brightness", lambda m: {"level": m.group(1)}),
     (r"\bmute\b", "mute_volume", lambda m: {}),

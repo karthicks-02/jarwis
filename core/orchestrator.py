@@ -1,3 +1,4 @@
+import asyncio
 import ollama
 import anthropic
 from typing import Callable
@@ -47,6 +48,8 @@ class Orchestrator:
         if action == "get_date":
             from datetime import datetime
             return datetime.now().strftime("%A, %B %-d, %Y")
+        # Matched pattern but no handler registered — escalate to Tier 1
+        print(f"[orchestrator] Tier 0 matched '{action}' but no handler found, escalating")
         return None
 
     async def _tier1_ollama(self, text: str, context: str) -> str | None:
@@ -61,7 +64,8 @@ class Orchestrator:
         ]
 
         try:
-            response = ollama.chat(
+            response = await asyncio.to_thread(
+                ollama.chat,
                 model=config.OLLAMA_MODEL,
                 messages=messages,
                 tools=self.ollama_schemas if self.ollama_schemas else None,

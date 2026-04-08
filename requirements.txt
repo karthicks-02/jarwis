@@ -1,0 +1,37 @@
+# Voice
+openWakeWord
+sounddevice
+numpy
+faster-whisper
+
+# Language detection
+langdetect
+
+# AI
+anthropic>=0.40.0
+ollama>=0.3.0
+
+# Tools
+playwright
+httpx
+PyMuPDF
+Pillow
+slack-sdk
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+duckduckgo-search
+
+# TTS + Audio
+edge-tts
+pygame
+
+# System
+python-dotenv
+rumps
+psutil
+
+# Testing
+pytest
+pytest-asyncio
+pytest-mock

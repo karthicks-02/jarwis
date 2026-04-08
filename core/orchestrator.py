@@ -1,7 +1,7 @@
 import asyncio
 import ollama
 import anthropic
-from typing import Callable
+from typing import Callable, Optional
 from core.router import keyword_route
 from core.memory import Memory
 import config
@@ -29,7 +29,7 @@ class Orchestrator:
         except Exception as e:
             return f"Tool '{name}' failed: {e}"
 
-    async def _tier0(self, text: str) -> str | None:
+    async def _tier0(self, text: str) -> Optional[str]:
         """Tier 0: keyword match — zero tokens."""
         route = keyword_route(text)
         if not route:
@@ -52,7 +52,7 @@ class Orchestrator:
         print(f"[orchestrator] Tier 0 matched '{action}' but no handler found, escalating")
         return None
 
-    async def _tier1_ollama(self, text: str, context: str) -> str | None:
+    async def _tier1_ollama(self, text: str, context: str) -> Optional[str]:
         """Tier 1: Ollama local model — free, private."""
         system = SYSTEM_PROMPT
         if context:

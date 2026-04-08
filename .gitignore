@@ -9,4 +9,5 @@ build/
 .DS_Store
 /tmp/
 data/gmail_token.json
+data/google_credentials.json
 venv/

@@ -1,7 +1,10 @@
 import os
+import pathlib
 from dotenv import load_dotenv
 
 load_dotenv()
+
+_BASE = pathlib.Path(__file__).parent
 
 # Wake word
 WAKE_WORD_MODEL = "hey_jarvis"
@@ -21,7 +24,7 @@ TTS_ENGLISH_VOICE = "en-US-AndrewNeural"
 TTS_OUTPUT_FILE = "/tmp/jarwis_reply.mp3"
 
 # Memory
-DB_PATH = "data/jarwis.db"
+DB_PATH = str(_BASE / "data" / "jarwis.db")
 MEMORY_TOP_K = 3
 
 # API Keys

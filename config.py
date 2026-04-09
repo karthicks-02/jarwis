@@ -11,10 +11,10 @@ WAKE_WORD_MODEL = "hey_jarvis"
 WAKE_WORD_THRESHOLD = 0.5
 
 # STT
-WHISPER_MODEL = "large-v3"
+WHISPER_MODEL = "small"
 
 # Models
-OLLAMA_MODEL = "qwen2.5:72b"
+OLLAMA_MODEL = "qwen2.5:7b"
 CLAUDE_HAIKU_MODEL = "claude-haiku-4-5-20251001"
 CLAUDE_SONNET_MODEL = "claude-sonnet-4-6"
 

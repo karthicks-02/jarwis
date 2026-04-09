@@ -11,6 +11,8 @@ ROUTES = [
     (r"what time|time is it|time என்ன|time சொல்", "get_time", lambda m: {}),
     (r"what.*date|today.*date|date என்ன|இன்னைக்கு date", "get_date", lambda m: {}),
     (r"shutdown|close jarwis|stop jarwis|bye jarwis", "shutdown", lambda m: {}),
+    (r"weather(?:\s+in\s+([a-zA-Z\s]{2,30}))?|rain|forecast", "get_weather",
+     lambda m: {"city": m.group(1).strip() if m.lastindex and m.group(1) else ""}),
 ]
 
 def keyword_route(text: str) -> Optional[tuple[str, dict]]:

@@ -17,6 +17,11 @@ class Listener:
         )
         print("[listener] ready — say 'Hey Jarwis'")
 
+    def reset(self):
+        """Clear OWW prediction buffers so prior detections don't bleed through."""
+        for model_name in self.oww.prediction_buffer:
+            self.oww.prediction_buffer[model_name].clear()
+
     async def wait_for_wake_word(self) -> bool:
         """
         Block until the wake word is detected.
